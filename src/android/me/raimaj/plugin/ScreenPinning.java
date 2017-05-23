@@ -23,24 +23,21 @@ public class ScreenPinning extends CordovaPlugin {
     /**
      * Cordova: execute()
      */
-    @override
+    @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException
     {
         activity = cordova.getActivity();
-        activityManager = activity.getSystemService(Context.ACTIVITY_SERVICE);
+        activityManager = (ActivityManager) activity.getSystemService(Context.ACTIVITY_SERVICE);
         callback = callbackContext;
 
-        switch (action) {
-            case ACTION_ENTER_PINNED_MODE:
-                return enterPinnedMode();
-                break;
-            case ACTION_EXIT_PINNED_MODE:
-                return exitPinnedMode();
-                break;
-            default: 
-                return false;
-                break;
-            }
+        if (ACTION_ENTER_PINNED_MODE.equals(action)) {
+            return enterPinnedMode();
+        }
+        else if (ACTION_EXIT_PINNED_MODE.equals(action)) {
+            return exitPinnedMode();
+        }
+
+        return false;
     }
 
 
