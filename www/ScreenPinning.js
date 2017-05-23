@@ -22,4 +22,4 @@ var ScreenPinning = {
 
 };
 
-module.exports = ScreenPinning;
+module.exports = ScreenPinning; 
