@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
         id="cordova-plugin-screen-pinning" version="0.0.1">
-    <name>LockTask</name>
+    <name>Screen Pinning</name>
     <description>Cordova plugin exposing Android's screen pinning APIs</description>
     <license>MIT</license>
     <keywords>cordova,android,sceen pinning,locktask,single purpose device</keywords>
