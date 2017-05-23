@@ -11,9 +11,9 @@
     <platform name="android">
         <config-file target="res/xml/config.xml" parent="/*">
         <feature name="ScreenPinning">
-            <param name="android-package" value="me.raimaj.ScreenPinning" />
+            <param name="android-package" value="me.raimaj.plugin.ScreenPinning" />
         </feature>
         </config-file>
-        <source-file src="src/android/me/raimaj/plugin/ScreenPinning.java" target-dir="src/me/raimaj/plugins"/>
+        <source-file src="src/android/me/raimaj/plugin/ScreenPinning.java" target-dir="src/me/raimaj/plugin"/>
     </platform>
 </plugin>
