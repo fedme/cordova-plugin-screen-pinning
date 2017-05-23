@@ -6,7 +6,7 @@
     <license>MIT</license>
     <keywords>cordova,android,sceen pinning,locktask,single purpose device</keywords>
     <js-module name="screenPinning" src="www/screenPinning.js">
-        <clobbers target="plugin.screenPinning" />
+        <clobbers target="cordova.plugins.screenPinning" />
     </js-module>
     <platform name="android">
         <config-file target="res/xml/config.xml" parent="/*">
