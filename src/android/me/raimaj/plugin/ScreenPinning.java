@@ -4,6 +4,7 @@ import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.CordovaWebView;
 import org.apache.cordova.CordovaInterface;
 import org.apache.cordova.CallbackContext;
+import org.apache.cordova.CordovaArgs;
 import org.json.JSONArray;
 import org.json.JSONException;
 import android.app.Activity;
@@ -28,6 +29,8 @@ public class ScreenPinning extends CordovaPlugin {
     @Override
     public void initialize(CordovaInterface cordova, CordovaWebView webView) {
         super.initialize(cordova, webView);
+        activity = cordova.getActivity();
+        activityManager = (ActivityManager) activity.getSystemService(Context.ACTIVITY_SERVICE);
     }
 
 
@@ -35,17 +38,25 @@ public class ScreenPinning extends CordovaPlugin {
      * Cordova: execute()
      */
     @Override
-    public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException
-    {
-        activity = cordova.getActivity();
-        activityManager = (ActivityManager) activity.getSystemService(Context.ACTIVITY_SERVICE);
+    public boolean execute(String action, CordovaArgs args, CallbackContext callbackContext) throws JSONException
+    {  
         callback = callbackContext;
+        Boolean deviceAdmin = false;
 
-        if (ACTION_ENTER_PINNED_MODE.equals(action)) {
-            return enterPinnedMode();
+        try {
+
+            if (ACTION_ENTER_PINNED_MODE.equals(action)) {
+                if (!args.isNull(0))
+                    deviceAdmin = args.getBoolean(0);
+                return enterPinnedMode(deviceAdmin);
+            }
+            else if (ACTION_EXIT_PINNED_MODE.equals(action)) {
+                return exitPinnedMode();
+            }
+            
         }
-        else if (ACTION_EXIT_PINNED_MODE.equals(action)) {
-            return exitPinnedMode();
+        catch (Exception e) {
+            callback.error(e.getMessage());
         }
 
         return false;
@@ -55,7 +66,7 @@ public class ScreenPinning extends CordovaPlugin {
     /**
      * enterPinnedMode()
      */
-    private boolean enterPinnedMode()
+    private boolean enterPinnedMode(Boolean deviceAdmin)
     {
         try {
             // activity not already pinned...
