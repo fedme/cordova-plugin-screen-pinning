@@ -21,6 +21,15 @@ public class ScreenPinning extends CordovaPlugin {
 
 
     /**
+     * Cordova: initialize()
+     */
+    @Override
+    public void initialize(CordovaInterface cordova, CordovaWebView webView) {
+        super.initialize(cordova, webView);
+    }
+
+
+    /**
      * Cordova: execute()
      */
     @Override
