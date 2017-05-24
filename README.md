@@ -19,7 +19,7 @@ cordova plugin add https://github.com/raimaj/cordova-plugin-screen-pinning.git
 - **kioskMode:** [Boolean optional] - set this to true to enter Kiosk Mode
 
 ```js
-window.plugins.screenPinning.enterPinnedMode(successCallback, errorCallback);
+cordova.plugins.screenPinning.enterPinnedMode(successCallback, errorCallback);
 ```
 
 ### exitPinnedMode()
@@ -29,7 +29,7 @@ window.plugins.screenPinning.enterPinnedMode(successCallback, errorCallback);
 - **errorCallback:** [Function(error) optional] - error callback, error message string is passed
 
 ```js
-window.plugins.screenPinning.exitPinnedMode(successCallback, errorCallback);
+cordova.plugins.screenPinning.exitPinnedMode(successCallback, errorCallback);
 ```
 
 ## Device owner (Kiosk Mode)
@@ -51,7 +51,7 @@ adb shell dpm set-device-owner com.mydomain.myapp/me.raimaj.plugin.DefaultDevice
 After you have set your app as the device owner, you can do the following:
 
 ```js
-window.plugins.screenPinning.enterPinnedMode(successCallback, errorCallback, true);
+cordova.plugins.screenPinning.enterPinnedMode(successCallback, errorCallback, true);
 ```
 
 
