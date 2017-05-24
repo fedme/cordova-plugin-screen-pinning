@@ -18,9 +18,13 @@ public class ScreenPinning extends CordovaPlugin {
 
     private static final String ACTION_ENTER_PINNED_MODE = "enterPinnedMode";
     private static final String ACTION_EXIT_PINNED_MODE = "exitPinnedMode";
+    private static final String CLASS_ADMIN_RECEIVER = "me.raimaj.plugin.DefaultDeviceAdminReceiver";
+
     private CallbackContext callback = null;
     private Activity activity = null;
     private ActivityManager activityManager = null;
+    private DevicePolicyManager dpm = null;
+    private ComponentName dac = null;
 
 
     /**
@@ -31,6 +35,7 @@ public class ScreenPinning extends CordovaPlugin {
         super.initialize(cordova, webView);
         activity = cordova.getActivity();
         activityManager = (ActivityManager) activity.getSystemService(Context.ACTIVITY_SERVICE);
+        dac = new ComponentName(activity.getPackageName(), CLASS_ADMIN_RECEIVER);
     }
 
 
@@ -69,6 +74,15 @@ public class ScreenPinning extends CordovaPlugin {
     private boolean enterPinnedMode(Boolean deviceAdmin)
     {
         try {
+
+            if (deviceAdmin) {
+                dpm = (DevicePolicyManager) activity.getSystemService(Context.DEVICE_POLICY_SERVICE);
+                if (dpm.isDeviceOwnerApp(activity.getPackageName())) {
+                    String[] packages = {activity.getPackageName()};
+                   dpm.setLockTaskPackages(dac, packages);
+                }    
+            }
+
             // activity not already pinned...
             if (!activityManager.isInLockTaskMode()) {
                 activity.startLockTask();
