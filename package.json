@@ -1,6 +1,6 @@
 {
-  "name": "@isearch-lab/cordova-plugin-screen-pinning",
-  "version": "1.0.3",
+  "name": "cordova-plugin-screen-pinning",
+  "version": "1.0.4",
   "description": "Cordova plugin exposing Android's screen pinning APIs",
   "cordova": {
     "id": "cordova-plugin-screen-pinning",
