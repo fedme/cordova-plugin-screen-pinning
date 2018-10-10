@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
-        id="cordova-plugin-screen-pinning" version="0.0.1">
+        id="cordova-plugin-screen-pinning"
+        version="1.1.0">
     <name>Screen Pinning</name>
     <description>Cordova plugin exposing Android's screen pinning APIs</description>
     <license>MIT</license>
@@ -11,19 +12,9 @@
     <platform name="android">
         <config-file target="res/xml/config.xml" parent="/*">
         <feature name="ScreenPinning">
-            <param name="android-package" value="me.raimaj.plugin.ScreenPinning" />
+            <param name="android-package" value="io.fdmn.plugin.ScreenPinning" />
         </feature>
         </config-file>
         <source-file src="src/android/me/raimaj/plugin/ScreenPinning.java" target-dir="src/me/raimaj/plugin" />
-        <source-file src="src/android/me/raimaj/plugin/DefaultDeviceAdminReceiver.java" target-dir="src/me/raimaj/plugin" />
-        <resource-file src="res/android/device_admin.xml" target="res/xml/device_admin.xml" />
-        <config-file target="AndroidManifest.xml" parent="/manifest/application">
-            <receiver android:label="@string/app_name" android:name="me.raimaj.plugin.DefaultDeviceAdminReceiver" android:permission="android.permission.BIND_DEVICE_ADMIN">
-                <meta-data android:name="android.app.device_admin" android:resource="@xml/device_admin" />
-                <intent-filter>
-                    <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
-                </intent-filter>
-            </receiver>
-        </config-file>
     </platform>
 </plugin>

@@ -9,9 +9,8 @@ var ScreenPinning = {
     /**
      * enterPinnedMode()
      */
-    enterPinnedMode: function(successCallback, errorCallback, deviceAdmin) {
-        deviceAdmin = deviceAdmin || false;
-        exec(successCallback, errorCallback, "ScreenPinning", "enterPinnedMode", [deviceAdmin]);
+    enterPinnedMode: function(successCallback, errorCallback) {
+        exec(successCallback, errorCallback, "ScreenPinning", "enterPinnedMode", []);
     },
 
     /**
