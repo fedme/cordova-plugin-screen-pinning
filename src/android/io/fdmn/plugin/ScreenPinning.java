@@ -21,7 +21,6 @@ public class ScreenPinning extends CordovaPlugin {
     private CallbackContext callback = null;
     private Activity activity = null;
     private ActivityManager activityManager = null;
-    private DevicePolicyManager dpm = null;
     private ComponentName dac = null;
 
 
@@ -110,7 +109,7 @@ public class ScreenPinning extends CordovaPlugin {
             return false; 
 
         }
-        
+
         catch (Exception e) {
             callback.error(e.getMessage());
             return false;
