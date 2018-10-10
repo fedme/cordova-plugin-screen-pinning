@@ -32,27 +32,5 @@ cordova.plugins.screenPinning.enterPinnedMode(successCallback, errorCallback);
 cordova.plugins.screenPinning.exitPinnedMode(successCallback, errorCallback);
 ```
 
-## Device owner (Kiosk Mode)
-
-With the normal pinned mode, user can leave pinned mode easily with a combination of buttons. If, instead, you need your app to run in a sort of "Kiosk mode" (which the user cannot leave), you first need to set your app as the device owner:
-
-In order to set your app as the device owner you need to run this command while your device is plugged via USB debug:
-
-```sh
-adb shell dpm set-device-owner <YOUR APP PACKAGE NAME>/io.fdmn.plugin.DefaultDeviceAdminReceiver
-```
-
-For example, if your app package is "com.mydomain.myapp", you would run:
-
-```sh
-adb shell dpm set-device-owner com.mydomain.myapp/io.fdmn.plugin.DefaultDeviceAdminReceiver
-```
-
-After you have set your app as the device owner, you can do the following:
-
-```js
-cordova.plugins.screenPinning.enterPinnedMode(successCallback, errorCallback, true);
-```
-
 
 
