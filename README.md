@@ -15,8 +15,7 @@ cordova plugin add cordova-plugin-screen-pinning
 ### enterPinnedMode()
 
 - **successCallback:** [Function optional] - success callback
-- **errorCallback:** [Function optional] - error callback
-- **kioskMode:** [Boolean optional] - set this to true to enter Kiosk Mode
+- **errorCallback:** [Function(error) optional] - error callback
 
 ```js
 cordova.plugins.screenPinning.enterPinnedMode(successCallback, errorCallback);
@@ -25,7 +24,6 @@ cordova.plugins.screenPinning.enterPinnedMode(successCallback, errorCallback);
 ### exitPinnedMode()
 
 - **successCallback:** [Function optional] - success callback
-
 - **errorCallback:** [Function(error) optional] - error callback, error message string is passed
 
 ```js
